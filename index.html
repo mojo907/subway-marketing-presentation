@@ -105,18 +105,24 @@ h2{font-size:54px;line-height:1.1;font-weight:800;letter-spacing:-.015em;color:v
 .card b{color:var(--g)}
 
 /* STP */
-.persona{display:grid;grid-template-columns:430px 1fr;background:#fff;border:2px solid var(--line);border-radius:28px;overflow:hidden;margin-top:28px;height:470px;box-shadow:0 30px 60px -36px rgba(10,61,36,.5)}
-.persona .ph{background:#ccc url(img/p1.jpg) 30% 88%/190% auto}
-.persona .tx{padding:34px 44px}
-.persona small{font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--g);font-weight:700}
-.persona h3{font-size:44px;font-weight:800;color:var(--dg);margin-top:6px;line-height:1.1}
-.persona p{font-size:27px;line-height:1.35;margin-top:14px;color:var(--mut)}
-.chips{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
-.chips span{font-size:25px;font-weight:700;padding:10px 20px;border-radius:999px;background:#E6F3EA;color:var(--g)}
-.segs{display:flex;gap:16px;margin-top:20px}
-.segs div{flex:1;font-size:23px;line-height:1.3;padding:14px 18px;border-radius:16px;border:2px solid var(--line);background:#fff;color:var(--mut)}
-.segs div.pick{border-color:var(--g);background:#E6F3EA;color:var(--dg);font-weight:700}
-.state{margin-top:40px;background:var(--dg);color:#fff;border-radius:30px;padding:54px 64px;font-size:46px;line-height:1.34;font-weight:600;position:relative}
+.stp{display:grid;grid-template-columns:400px 1fr;gap:36px;margin-top:24px;height:610px}
+.who{background:#fff;border:2px solid var(--line);border-radius:28px;overflow:hidden;display:flex;flex-direction:column}
+.who .ph{flex:1;background:#ccc url(img/p1.jpg) 30% 80%/200% auto}
+.who .tx{padding:22px 26px}
+.who small,.lab,.tm small{font-size:19px;letter-spacing:.14em;text-transform:uppercase;color:var(--g);font-weight:700;display:block}
+.who h3{font-size:32px;font-weight:800;color:var(--dg);line-height:1.15;margin-top:6px}
+.tag b{font-size:34px;font-weight:800;color:var(--dg);display:block}
+.tag em{display:block;font-style:normal;font-weight:700;font-size:26px;color:var(--g)}
+.tag span{font-size:25px;color:var(--mut);display:block;margin-top:4px}
+.lab{margin-top:18px}
+.bases{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.base{background:#fff;border:2px solid var(--line);border-radius:16px;padding:11px 20px;font-size:24px;color:var(--mut);line-height:1.3}
+.base b{display:block;color:var(--dg);font-size:26px}
+.base b i{font-style:normal;color:var(--g);margin-right:10px}
+.base:last-child{grid-column:span 2}
+.tm{margin-top:14px;background:var(--dg);color:#fff;border-radius:16px;padding:16px 22px;font-size:27px;font-weight:600}
+.tm small{color:var(--y)}
+.state{margin-top:30px;background:var(--dg);color:#fff;border-radius:30px;padding:44px 60px;font-size:44px;line-height:1.34;font-weight:600;position:relative}
 .state .w{opacity:0;transition:opacity .05s linear;transition-delay:calc(var(--i)*45ms)}
 .active .state .w{opacity:1}
 .state u{text-decoration:none;color:var(--y)}
@@ -295,25 +301,29 @@ body.print .slice{filter:none}
 </section>
 
 <!-- 6 STP 1 -->
-<section class="slide" data-sec="4" data-owner="Maëa" data-title="Segmentation and targeting">
+<section class="slide" data-sec="4" data-steps="6" data-owner="Maëa" data-title="Segmentation and targeting">
   <div class="kick">Segmenting and targeting</div>
-  <div class="draft">DRAFT, to validate by Maëa</div>
   <h2>Subway targets consumers seeking convenience, value &amp; choice</h2>
-  <p class="def"><b>Definition</b>Segmentation divides the market into groups with similar needs. Targeting chooses which group to serve first.</p>
-  <div class="persona">
-    <div class="ph"></div>
-    <div class="tx">
-      <small>Target persona</small>
-      <h3>Urban students &amp; young professionals (18 to 34)</h3>
-      <p>A student in Barcelona has 30 minutes between classes and wants something quick, filling and not too expensive.</p>
-      <div class="chips"><span>Convenience</span><span>Value</span><span>Choice</span></div>
-      <div class="segs"><div>Value-seeking diners</div><div class="pick">Students and office workers wanting a quick lunch</div><div>“Healthier” fast-food seekers</div></div>
+  <p class="def" style="max-width:1700px"><b>Definition</b>Segmentation divides the market into groups with similar needs. Targeting chooses which group to serve first.</p>
+  <div class="stp">
+    <div class="who"><div class="ph"></div><div class="tx"><small>Target persona</small><h3>Urban students &amp; young professionals (18 to 34)</h3></div></div>
+    <div>
+      <div class="tag"><small class="lab" style="margin-top:0">Main consumer profile</small><b>The time-conscious consumer</b><em>On-the-go · Value-oriented · Choice-driven</em><span>Looking for quick, accessible meals that fit their lifestyle, budget and personal preferences.</span></div>
+      <small class="lab">How Subway segments this market</small>
+      <div class="bases">
+        <div class="base rv" data-at="1"><b><i>01</i>Geographic</b>Urban areas · Busy city locations</div>
+        <div class="base rv" data-at="2"><b><i>02</i>Demographic</b>Students · Young professionals · Different income levels</div>
+        <div class="base rv" data-at="3"><b><i>03</i>Psychographic</b>Busy lifestyles · Convenience · Personal choice</div>
+        <div class="base rv" data-at="4"><b><i>04</i>Benefits sought</b>Speed · Affordability · Customisation</div>
+        <div class="base rv" data-at="5"><b><i>05</i>Behavioural</b>Lunch occasions · Quick-service usage · Repeat purchases</div>
+      </div>
+      <div class="tm rv" data-at="6"><small>Target market</small>Time-pressed consumers who value convenience, affordability and customisation.</div>
     </div>
   </div>
   <div class="owner">Presented by <b>Maëa</b></div>
-  <aside class="notes"><p>Segmentation means dividing the market into groups of consumers with similar needs. Targeting means choosing which of those groups the brand serves first. Subway's customers fall into three main segments: value-seeking diners, office workers and students who want a quick lunch, and people looking for a healthier fast-food option. Our target is urban students and young professionals aged 18 to 34. They look for three things: convenience, value and choice. Picture a student in Barcelona with 30 minutes between classes who wants something quick, filling and not too expensive. That is the lunch moment Subway is built for.</p>
-  <h4>Likely questions</h4><p><b>Which segmentation bases did you use?</b> Demographic (age 18 to 34, students and young professionals), geographic (urban), and behavioural (the quick lunch occasion, value-seeking).</p><p><b>Why this target and not families?</b> Their needs (price, speed, customisation) match what Subway offers, and they live and work where Subway stores are: stations, campuses and malls.</p>
-  <h4>Sources (DRAFT elements)</h4><p>Title and target are Maëa's. The definition, the three segments (from Naud's "Customers" table) and the Barcelona example (from Joé's notes) were added from the group doc. Photo: KC Shum on Unsplash.</p></aside>
+  <aside class="notes"><p>Segmentation means dividing the market into groups of consumers with similar needs. Targeting means choosing which of those groups the brand serves first. The main consumer profile is the time-conscious consumer: on-the-go, value-oriented and choice-driven. They look for quick, accessible meals that fit their lifestyle, budget and personal preferences. Subway segments this market on five bases. Geographic: urban areas and busy city locations. Demographic: students and young professionals, across different income levels. Psychographic: busy lifestyles, convenience and personal choice. Benefits sought: speed, affordability and customisation. Behavioural: lunch occasions, quick-service usage and repeat purchases. That leads to the target market: time-pressed consumers who value convenience, affordability and customisation. In one persona: urban students and young professionals aged 18 to 34.</p>
+  <h4>Likely questions</h4><p><b>Which segmentation base matters most for Subway?</b> Benefits sought. Speed, affordability and customisation are what separate Subway's customers from those of burger chains or premium sandwich shops.</p><p><b>Why this target and not families?</b> Their needs match what Subway offers, and they live, study and work in the busy city locations where Subway stores are.</p>
+  <h4>Sources</h4><p>All slide content is Maëa's, from the group doc. Only the one-line definition was added. Photo: KC Shum on Unsplash.</p></aside>
 </section>
 
 <!-- 7 STP 2 -->
@@ -323,13 +333,13 @@ body.print .slice{filter:none}
   <p class="def"><b>Definition</b>A positioning statement says who the brand is for, what category it competes in and why it is different.</p>
   <div class="state" id="state">For <u>busy, everyday consumers</u> seeking convenient, affordable, and customizable meals, Subway is the <u>quick-service restaurant</u> that offers <u>freshly made, customizable sandwiches and salads</u>, delivering accessible quality and a fresher alternative to traditional fast food.</div>
   <div class="legend">
-    <div><b>Target</b>Busy, everyday consumers</div>
-    <div><b>Category</b>Quick-service restaurant</div>
-    <div><b>Point of difference</b>Freshly made and customisable</div>
-    <div><b>Benefit</b>Accessible quality, a fresher alternative</div>
+    <div><b>Convenience</b>Quick-service meals</div>
+    <div><b>Customisation</b>Made to order</div>
+    <div><b>Personal choice</b>A meal your way</div>
   </div>
+  <div class="tm"><small>Subway's differentiation</small>Product / Quality · Convenience · Price</div>
   <div class="owner">Presented by <b>Maëa</b></div>
-  <aside class="notes"><p>A positioning statement says who the brand is for, what category it competes in and why it is different. Here is Subway's: for busy, everyday consumers seeking convenient, affordable and customizable meals, Subway is the quick-service restaurant that offers freshly made, customizable sandwiches and salads, delivering accessible quality and a fresher alternative to traditional fast food. The target is busy everyday consumers. The category is quick-service restaurants. The point of difference is freshly made and customisable: you build your own sandwich. And the benefit is accessible quality. So Subway wins through convenience and customisation.</p>
+  <aside class="notes"><p>A positioning statement says who the brand is for, what category it competes in and why it is different. Here is Subway's: for busy, everyday consumers seeking convenient, affordable and customizable meals, Subway is the quick-service restaurant that offers freshly made, customizable sandwiches and salads, delivering accessible quality and a fresher alternative to traditional fast food. It rests on three pillars. Convenience: quick-service meals. Customisation: made to order. Personal choice: a meal your way. Subway differentiates on product and quality, convenience and price. So Subway wins through convenience and customisation.</p>
   <h4>Likely questions</h4><p><b>What is Subway's point of difference versus burger chains?</b> "Freshly made, never fried" and full customisation, with many items above 20 grams of protein.</p><p><b>Is this positioning still credible against Jersey Mike's?</b> That is the risk: Subway is perceived as lower quality than newer sandwich rivals, so it has to prove freshness, not only claim it.</p></aside>
 </section>
 

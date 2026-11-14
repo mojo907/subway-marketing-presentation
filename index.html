@@ -62,7 +62,7 @@ h2{font-size:54px;line-height:1.1;font-weight:800;letter-spacing:-.015em;color:v
 .flow span:last-child{background:var(--y);color:var(--dg)}
 
 /* PESTLE */
-.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px;height:560px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px;height:590px}
 .tile{perspective:1400px;display:block}
 .tile .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
 .tile.on .in{transform:rotateY(180deg)}
@@ -71,16 +71,20 @@ h2{font-size:54px;line-height:1.1;font-weight:800;letter-spacing:-.015em;color:v
 .front b{font-size:150px;font-weight:900;line-height:.9;color:var(--y)}
 .front span{font-size:38px;font-weight:700;margin-top:6px}
 .front em{position:absolute;right:26px;bottom:20px;font-style:normal;font-size:18px;opacity:.7}
-.back{background:#fff;border:3px solid var(--g);transform:rotateY(180deg)}
+.back{padding:22px 28px;background:#fff;border:3px solid var(--g);transform:rotateY(180deg)}
 .back strong{font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
-.back p{font-size:29px;line-height:1.3;margin-top:12px;font-weight:500}
+.back li{font-size:25px;line-height:1.25;margin:10px 0 0 24px;font-weight:500}
 
 /* SWOT */
-.swot{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px;height:580px}
-.q{border-radius:24px;padding:26px 34px;position:relative;transition:transform .3s,opacity .3s,box-shadow .3s;display:block;overflow:hidden}
+.swot{display:grid;grid-template-columns:34px 1fr 1fr;grid-template-rows:28px 1fr 1fr;gap:16px 20px;margin-top:22px;height:690px}
+.ax{font-size:19px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);text-align:center;align-self:center}
+.ax.v{writing-mode:vertical-rl;transform:rotate(180deg)}
+.q{border-radius:24px;padding:20px 30px;position:relative;transition:transform .3s,opacity .3s,box-shadow .3s;display:block;overflow:hidden}
 .q h3{font-size:36px;font-weight:800;display:flex;align-items:center;gap:14px}
-.q li{font-size:27px;line-height:1.3;margin:10px 0 0 26px;font-weight:500}
-.q svg{position:absolute;right:26px;top:22px;width:110px;height:110px;opacity:.9;transition:transform .3s}
+.q p{font-size:21px;font-style:italic;opacity:.85;margin-top:2px;max-width:calc(100% - 110px)}
+.q ul{columns:2;column-gap:36px;margin-top:8px}
+.q li{font-size:25px;line-height:1.25;margin:8px 0 0 24px;font-weight:500;break-inside:avoid}
+.q svg{position:absolute;right:24px;top:10px;width:84px;height:84px;opacity:.9;transition:transform .3s}
 .q.s{background:var(--g);color:#fff}.q.w{background:#fff;border:3px solid var(--line)}
 .q.o{background:var(--y);color:var(--dg)}.q.t{background:var(--dg);color:#fff}
 .q.cur,.q:hover{transform:scale(1.045);z-index:2;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
@@ -237,43 +241,53 @@ body.print .slice{filter:none}
 <!-- 3 PESTLE -->
 <section class="slide" data-sec="1" data-steps="6" data-owner="Chelsea" data-title="PESTLE">
   <div class="kick">PESTLE</div>
-  <div class="draft">DRAFT, to validate by Chelsea</div>
-  <h2>External forces push Subway toward value, freshness and digital convenience</h2>
-  <p class="def"><b>Definition</b>PESTLE scans the macro-environment a company cannot control: Political, Economic, Social, Technological, Legal and Environmental forces.</p>
+  <h2>Subway's growth depends on how well it responds to rising costs and changing consumer expectations</h2>
+  <p class="def" style="max-width:1700px"><b>Definition</b>A PESTLE analysis is a strategic business framework used to identify, evaluate, and monitor the macro-environmental (external) factors that can affect an organization, industry, or project.</p>
   <div class="tiles">
-    <button class="tile" data-at="1"><div class="in"><div class="face front"><b>P</b><span>Political</span><em>click to flip</em></div><div class="face back"><strong>Political</strong><p>Wage laws raise franchisee costs: California set a $20 minimum wage for fast-food workers from April 2024.</p></div></div></button>
-    <button class="tile" data-at="2"><div class="in"><div class="face front"><b>E</b><span>Economic</span></div><div class="face back"><strong>Economic</strong><p>Cost-conscious consumers push chains into value wars. Food, rent and labour costs squeeze franchisee margins.</p></div></div></button>
-    <button class="tile" data-at="3"><div class="in"><div class="face front"><b>S</b><span>Social</span></div><div class="face back"><strong>Social</strong><p>Rising interest in protein and “fresh” food fits Subway's “freshly made, never fried” positioning.</p></div></div></button>
-    <button class="tile" data-at="4"><div class="in"><div class="face front"><b>T</b><span>Technological</span></div><div class="face back"><strong>Technological</strong><p>Digital ordering and delivery are becoming standard. The EMEA “Blueprint” format (from 2027) is built around kiosks and the app.</p></div></div></button>
-    <button class="tile" data-at="5"><div class="in"><div class="face front"><b>L</b><span>Legal</span></div><div class="face back"><strong>Legal</strong><p>Franchise relationship rules and disclosure requirements. Subway has had many franchisee disputes.</p></div></div></button>
-    <button class="tile" data-at="6"><div class="in"><div class="face front"><b>E</b><span>Environmental</span></div><div class="face back"><strong>Environmental</strong><p>Sourcing and packaging are under scrutiny. Subway reports 100% cage-free eggs in the US and Canada since November 2025.</p></div></div></button>
+    <button class="tile" data-at="1"><div class="in"><div class="face front"><b>P</b><span>Political</span><em>click to flip</em></div><div class="face back"><strong>Political</strong><ul><li>Impact of international trade agreements</li><li>Impact of geopolitical instability</li></ul></div></div></button>
+    <button class="tile" data-at="2"><div class="in"><div class="face front"><b>E</b><span>Economic</span></div><div class="face back"><strong>Economic</strong><ul><li>Rising costs and inflation</li><li>Changing customer perceptions of value</li><li>Increasing competition and pressure on franchise profitability</li></ul></div></div></button>
+    <button class="tile" data-at="3"><div class="in"><div class="face front"><b>S</b><span>Social</span></div><div class="face back"><strong>Social</strong><ul><li>Growing demand for healthier food</li><li>Increasing awareness of ingredients and food transparency</li><li>Growing demand for convenience and digital experiences</li></ul></div></div></button>
+    <button class="tile" data-at="4"><div class="in"><div class="face front"><b>T</b><span>Technological</span></div><div class="face back"><strong>Technological</strong><ul><li>Growing use of digital technology in the fast-food industry</li><li>Increasing reliance on third-party delivery platforms and cybersecurity</li></ul></div></div></button>
+    <button class="tile" data-at="5"><div class="in"><div class="face front"><b>L</b><span>Legal</span></div><div class="face back"><strong>Legal</strong><ul><li>Increasing requirements for food labelling and nutritional information</li><li>Strict GMO and food safety regulations</li><li>Changes in employment laws and labour regulations</li></ul></div></div></button>
+    <button class="tile" data-at="6"><div class="in"><div class="face front"><b>E</b><span>Environmental</span></div><div class="face back"><strong>Environmental</strong><ul><li>Increasing impact of climate change on supply chains</li><li>Growing pressure to reduce food waste and use sustainable packaging</li></ul></div></div></button>
   </div>
   <div class="owner">Presented by <b>Chelsea</b></div>
-  <aside class="notes"><p>PESTLE looks at the macro forces a company cannot control. For Subway, six stand out. Political: wage legislation, such as California's $20 minimum wage for fast-food workers, raises costs for franchisees. Economic: consumers are cost-conscious, which pushes all chains into a value war, while food, rent and labour costs squeeze franchisee margins. Social: growing interest in protein and fresh food fits Subway's positioning. Technological: digital ordering and delivery are now standard, and the new EMEA Blueprint format from 2027 is built around kiosks and the app. Legal: franchise rules and disclosure requirements matter because Subway has had many franchisee disputes. Environmental: sourcing and packaging are under scrutiny. Overall, the environment pushes Subway toward value, freshness and digital convenience.</p>
-  <h4>Likely questions</h4><p><b>Which factor matters most for Subway today?</b> Economic. The value war drives its biggest move, the first-ever Fresh Value Menu (15 items under $5, April 2026).</p><p><b>How do wage laws affect a franchisor that owns no US stores?</b> Subway is fully franchised, so higher wages hit franchisees, whose economics are already weak. That limits how much discounting they accept.</p>
-  <h4>Sources (DRAFT slide)</h4><p>Economic, Social, Technological, Legal: group doc, 5C's "Context" table. Political: California Department of Industrial Relations, Fast Food Council page on AB 1228 (dir.ca.gov/AB1228). Environmental: Subway "Responsible Sourcing" page (subway.com, sustainability section).</p></aside>
+  <aside class="notes">
+    <div data-k="0"><p><b>Definition.</b> A PESTLE analysis is a strategic business framework used to identify, evaluate, and monitor the macro-environmental (external) factors that can affect an organization, industry, or project.</p></div>
+    <div data-k="1"><p><b>Political.</b> <u>Impact of international trade agreements:</u> Trade agreements can reduce tariffs and make it easier for Subway to source ingredients and operate across international markets. <u>Impact of geopolitical instability:</u> Political conflicts and international tensions can disrupt supply chains, increase costs and affect Subway’s reputation. Its former Russian franchise operations also highlight the reputational risks of operating in politically sensitive markets.</p></div>
+    <div data-k="2"><p><b>Economic.</b> <u>Rising costs and inflation:</u> Higher prices for ingredients, energy, transport and labour increase operating costs and put pressure on Subway’s profit margins. <u>Changing customer perceptions of value:</u> As the cost of living rises, customers become more price-conscious. Subway’s historic $5 Footlong promotion helped establish its value image, while concerns about smaller portions and higher prices may affect customer perceptions. <u>Increasing competition and pressure on franchise profitability:</u> Subway competes with other fast-food chains offering affordable meals and convenient services. Franchisees must balance competitive prices with rising operating costs, which can affect profitability and the customer experience.</p></div>
+    <div data-k="3"><p><b>Social.</b> <u>Growing demand for healthier food:</u> Consumers are increasingly looking for healthier food options, creating opportunities for Subway to promote its salads, fresh ingredients and customisable sandwiches. However, customers may still be concerned about the nutritional content of some menu items. <u>Increasing awareness of ingredients and food transparency:</u> Consumers are more interested in where ingredients come from and whether food contains GMOs, additives or artificial ingredients. This increases pressure on Subway to communicate clearly about its ingredients and sourcing. <u>Growing demand for convenience and digital experiences:</u> Customers increasingly expect quick service, mobile ordering and home delivery. Popular culture, including product placement in Korean dramas, can also help increase brand awareness among younger audiences.</p></div>
+    <div data-k="4"><p><b>Technological.</b> <u>Growing use of digital technology in the fast-food industry:</u> Mobile apps, online ordering, self-service kiosks and loyalty programmes can improve convenience, customer engagement and operational efficiency. <u>Increasing reliance on third-party delivery platforms and cybersecurity:</u> Delivery platforms help Subway reach more customers, but their commission fees can reduce profits. Collecting customer data through digital services also creates cybersecurity and data-protection responsibilities.</p></div>
+    <div data-k="5"><p><b>Legal.</b> <u>Increasing requirements for food labelling and nutritional information:</u> Subway must follow rules on nutritional information, ingredient lists and allergen declarations. Changes in these regulations may require updates to menus, packaging and customer information. <u>Strict GMO and food safety regulations:</u> Different countries have different requirements for genetically modified ingredients and food safety. Subway must ensure that its ingredients, preparation methods and food-handling procedures meet local standards. <u>Changes in employment laws and labour regulations:</u> Minimum wage increases, working-hour restrictions and employee rights regulations can increase labour costs and affect how Subway manages its restaurants.</p></div>
+    <div data-k="6"><p><b>Environmental.</b> <u>Increasing impact of climate change on supply chains:</u> Extreme weather and changing climate conditions can affect the availability and price of fresh produce, creating supply disruptions and higher costs. <u>Growing pressure to reduce food waste and use sustainable packaging:</u> Subway faces pressure to reduce food waste and use more sustainable packaging. Its large restaurant network also means that energy consumption, transport and waste management contribute to its environmental footprint.</p></div>
+    <p><b>Conclusion:</b> Subway has ambitious goals to strengthen its market position and expand internationally. Achieving these goals will depend on how effectively it responds to external challenges, such as rising costs and changing consumer expectations. By maintaining strong franchise performance and customer appeal, Subway can support its long-term growth and expansion.</p>
+    <h4>Likely questions</h4><p><b>Which factor matters most for Subway today?</b> Economic. Rising costs squeeze margins while customers become more price-conscious, so franchisees must balance competitive prices with rising operating costs.</p><p><b>Why does geopolitics matter for a sandwich chain?</b> Conflicts can disrupt supply chains and raise costs, and operating in politically sensitive markets carries reputational risk, as Subway's former Russian franchise operations showed.</p>
+    <h4>Sources (Chelsea)</h4><p style="font-size:.8em;word-break:break-all">https://www.atlanticcouncil.org/dispatches/eu-and-mercosur-are-creating-one-of-the-worlds-largest-free-trade-areas/<br>https://nazk.gov.ua/en/news/fast-food-that-really-kills-nacp-adds-subway-to-the-list-of-international-war-sponsors/<br>https://newsroom.subway.com/Press-Releases?item=122606<br>https://gsquaredprivatewealth.com/august-2025-brief-the-subway-sandwich-economy/<br>https://www.linkedin.com/pulse/revitalizing-subway-case-study-transforming-customer-srihita-vanguri<br>https://www.ingredicheck.app/blog/whats-changing-on-food-labels-in-2026-fdas-new-rules<br>https://www.foodnavigator.com/Article/2026/01/07/most-gmo-foods-have-avoided-labels-a-court-just-changed-that/<br>https://www.themoscowtimes.com/2025/08/15/sandwich-chain-subway-announces-subjoy-name-change-after-trademark-loss-a90238<br>https://www.subway.com/en-us/sustainability/well-being/quality-and-food-safety</p>
+  </aside>
 </section>
 
 <!-- 4 SWOT -->
 <section class="slide" data-sec="2" data-steps="4" data-owner="Kira" data-title="SWOT">
   <div class="kick">SWOT</div>
-  <div class="draft">DRAFT, to validate by Kira</div>
-  <h2>Scale is Subway's biggest strength, but weak store economics leave it exposed</h2>
-  <p class="def"><b>Definition</b>SWOT sums up a brand's internal Strengths and Weaknesses and its external Opportunities and Threats.</p>
+  <h2>Subway's brand and network are strong, but perception and consistency hold it back</h2>
   <div class="swot">
-    <button class="q s" data-only="1"><h3>Strengths</h3><ul><li>Largest US restaurant footprint by count</li><li>Low-cost, small-format model</li><li>Strong brand awareness</li></ul>
+    <span></span><span class="ax">Helpful</span><span class="ax">Harmful</span>
+    <span class="ax v">Internal</span>
+    <button class="q s" data-only="1"><h3>Strengths</h3><p>Internal advantages that help a company achieve its objectives</p><ul><li>Strong global brand recognition</li><li>Network of locations</li><li>Advanced franchising</li><li>Flexible restaurant format</li><li>Healthy brand positioning</li></ul>
       <svg viewBox="0 0 100 100"><path d="M8 62C8 30 28 22 50 22s42 8 42 40q0 6-6 6H14q-6 0-6-6z" fill="#E3A857"/><path d="M30 34l8 8M48 30l8 8M66 34l8 8" stroke="#C98A3F" stroke-width="5" stroke-linecap="round"/></svg></button>
-    <button class="q w" data-only="2"><h3>Weaknesses</h3><ul><li>About $500,000 average sales per store</li><li>Shrinking US base, strained franchisees</li><li>Leadership turnover</li></ul>
+    <button class="q w" data-only="2"><h3>Weaknesses</h3><p>Internal limitations that put a company at a disadvantage</p><ul><li>Brand perception</li><li>Franchise inconsistency</li><li>Customer experience</li><li>Marketing and promotions</li><li>Menu and sourcing</li><li>Outdated facilities</li><li>Product differentiation</li></ul>
       <svg viewBox="0 0 100 100"><path d="M8 70L92 30v40z" fill="#FFC20D"/><circle cx="62" cy="58" r="7" fill="#fff"/><circle cx="80" cy="50" r="4.5" fill="#fff"/><circle cx="40" cy="64" r="4" fill="#fff"/></svg></button>
-    <button class="q o" data-only="3"><h3>Opportunities</h3><ul><li>12,000+ future international units committed</li><li>Protein and “fresh” food trend</li><li>Delivery and digital ordering growth</li></ul>
+    <span class="ax v">External</span>
+    <button class="q o" data-only="3"><h3>Opportunities</h3><p>External trends or developments a company can capitalize on</p><ul><li>Blueprint initiative</li><li>Digital ordering and delivery</li><li>Growing interest in personalized ordering format</li><li>International market growth</li></ul>
       <svg viewBox="0 0 100 100"><path d="M50 90C14 78 10 40 22 14c30 4 58 22 54 56-2 12-12 18-26 20z" fill="#3E9B2E"/><path d="M50 90C46 62 38 40 26 20" stroke="#BFE6A8" stroke-width="4" fill="none" stroke-linecap="round"/></svg></button>
-    <button class="q t" data-only="4"><h3>Threats</h3><ul><li>Jersey Mike's: sales up 13%, fresh IPO capital</li><li>Sector-wide value war (McDonald's, Taco Bell)</li><li>Flat category: rivals' gains are Subway's losses</li></ul>
+    <button class="q t" data-only="4"><h3>Threats</h3><p>External factors that could negatively affect a company’s performance</p><ul><li>Declining US market presence</li><li>Intense competition</li><li>Changing consumer preferences</li><li>Price-sensitive consumers</li></ul>
       <svg viewBox="0 0 100 100"><path d="M22 34c10-8 22-6 30 6 12 18 26 30 40 36-22 10-50 2-64-18-6-10-8-18-6-24z" fill="#E03C31"/><path d="M24 34c-2-10 2-18 10-22" stroke="#5DB13B" stroke-width="7" fill="none" stroke-linecap="round"/></svg></button>
   </div>
   <div class="owner">Presented by <b>Kira</b></div>
-  <aside class="notes"><p>SWOT sums up internal strengths and weaknesses and external opportunities and threats. Subway's strengths are about scale: the largest US restaurant footprint by count, a low-cost small-format model and strong brand awareness. Its weaknesses are about economics: average sales per store are around $500,000, far below Jersey Mike's at about $1.36 million. The US base is shrinking, franchisees are strained and leadership changed again in July 2025. The opportunities are international growth, with more than 12,000 future units committed by master franchisees, plus the protein and fresh trend and growth in delivery. The threats: Jersey Mike's is growing 13% with fresh IPO capital, the whole sector is in a value war, and the sandwich category is flat, so every gain by a rival comes at Subway's expense.</p>
-  <h4>Likely questions</h4><p><b>What is the single biggest weakness?</b> Sales per store: about $500,000 versus about $1.36 million at Jersey Mike's. It weakens franchisees and everything that depends on them.</p><p><b>Which opportunity is most realistic?</b> International growth: over 30 master franchise agreements and 12,000+ committed units, including about 400 restaurants in Spain with Grupo Vierci.</p>
-  <h4>Sources (DRAFT slide)</h4><p>Built entirely from the group doc: Naud's 5C's (Company strengths and weaknesses, Competitors, Collaborators, Context) and Joé's Consumer Decision Process notes. No external figures added.</p></aside>
+  <aside class="notes"><p><b>About the SWOT.</b> SWOT sorts factors on two axes: internal or external, and helpful or harmful. Strengths are internal advantages that help a company achieve its objectives. Weaknesses are internal limitations that put a company at a disadvantage. Opportunities are external trends or developments a company can capitalize on. Threats are external factors that could negatively affect a company’s performance.</p>
+  <p><b>Applied to Subway.</b> Strengths: strong global brand recognition, its network of locations, advanced franchising, a flexible restaurant format and a healthy brand positioning. Weaknesses: brand perception, franchise inconsistency, customer experience, marketing and promotions, menu and sourcing, outdated facilities and product differentiation. Opportunities: the Blueprint initiative, digital ordering and delivery, growing interest in a personalized ordering format and international market growth. Threats: a declining US market presence, intense competition, changing consumer preferences and price-sensitive consumers. In short, the brand and the network are strong, but perception and consistency hold Subway back.</p>
+  <h4>Likely questions</h4><p><b>What is the Blueprint initiative?</b> Subway's new EMEA restaurant format, rolling out from 2027. It is built around self-order kiosks and the app, and adds breakfast and coffee (from Naud's 5C's research).</p><p><b>Which weakness matters most?</b> Brand perception and product differentiation: Subway is perceived as lower quality than newer sandwich rivals such as Jersey Mike's, which makes it harder to stand out on anything but price.</p>
+  <h4>Sources</h4><p>All slide content is Kira's, from the group doc. The answers to the likely questions use facts from Naud's 5C's section.</p></aside>
 </section>
 
 <!-- 5 5C -->
@@ -331,7 +345,7 @@ body.print .slice{filter:none}
   <div class="kick">Brand positioning statement</div>
   <h2>Subway wins through convenience &amp; customisation</h2>
   <p class="def"><b>Definition</b>A positioning statement says who the brand is for, what category it competes in and why it is different.</p>
-  <div class="state" id="state">For <u>busy, everyday consumers</u> seeking convenient, affordable, and customizable meals, Subway is the <u>quick-service restaurant</u> that offers <u>freshly made, customizable sandwiches and salads</u>, delivering accessible quality and a fresher alternative to traditional fast food.</div>
+  <div class="state" id="state">For <u>time-pressed consumers</u> who value convenience, affordability and personal choice, Subway is a <u>quick-service restaurant</u> offering <u>made-to-order sandwiches and meals that customers can customise to their preferences</u>, providing a more personalised alternative to traditional fast-food options.</div>
   <div class="legend">
     <div><b>Convenience</b>Quick-service meals</div>
     <div><b>Customisation</b>Made to order</div>
@@ -339,8 +353,8 @@ body.print .slice{filter:none}
   </div>
   <div class="tm"><small>Subway's differentiation</small>Product / Quality · Convenience · Price</div>
   <div class="owner">Presented by <b>Maëa</b></div>
-  <aside class="notes"><p>A positioning statement says who the brand is for, what category it competes in and why it is different. Here is Subway's: for busy, everyday consumers seeking convenient, affordable and customizable meals, Subway is the quick-service restaurant that offers freshly made, customizable sandwiches and salads, delivering accessible quality and a fresher alternative to traditional fast food. It rests on three pillars. Convenience: quick-service meals. Customisation: made to order. Personal choice: a meal your way. Subway differentiates on product and quality, convenience and price. So Subway wins through convenience and customisation.</p>
-  <h4>Likely questions</h4><p><b>What is Subway's point of difference versus burger chains?</b> "Freshly made, never fried" and full customisation, with many items above 20 grams of protein.</p><p><b>Is this positioning still credible against Jersey Mike's?</b> That is the risk: Subway is perceived as lower quality than newer sandwich rivals, so it has to prove freshness, not only claim it.</p></aside>
+  <aside class="notes"><p>A positioning statement says who the brand is for, what category it competes in and why it is different. Here is Subway's: for time-pressed consumers who value convenience, affordability and personal choice, Subway is a quick-service restaurant offering made-to-order sandwiches and meals that customers can customise to their preferences, providing a more personalised alternative to traditional fast-food options. It rests on three pillars. Convenience: quick-service meals. Customisation: made to order. Personal choice: a meal your way. Subway differentiates on product and quality, convenience and price. So Subway wins through convenience and customisation.</p>
+  <h4>Likely questions</h4><p><b>What is Subway's point of difference versus burger chains?</b> Made to order and customised to each customer: a more personalised alternative. Subway also markets its menu as "freshly made, never fried".</p><p><b>Is this positioning still credible against Jersey Mike's?</b> That is the risk: Subway is perceived as lower quality than newer sandwich rivals, so it has to prove freshness, not only claim it.</p></aside>
 </section>
 
 <!-- 8 CDP -->
@@ -411,7 +425,7 @@ body.print .slice{filter:none}
       <div class="pt rv" data-at="4"><span class="n">4</span><span><small>Consumer decision process</small>Build the habit: Sub Club and the app make Subway the automatic choice</span></div>
     </div>
   </div>
-  <aside class="notes"><p>Let us connect everything. PESTLE and the 5C's show a market at war on price, so Subway has to defend value and keep the Fresh Value Menu visible. SWOT shows that scale is the strength but quality perception and store economics are the weakness, so Subway has to prove freshness, not only claim it. Segmentation, targeting and positioning tell us who to win: urban students and young professionals, 18 to 34, who want fast, affordable and customisable meals. And the consumer decision process shows how: win the evaluation stage and then build the habit with Sub Club and the app. Our recommendation in one sentence: Subway should turn its scale into a daily habit for value-seeking urban lunch customers. More repeat visits mean higher sales per store, which is exactly what franchisees need.</p>
+  <aside class="notes"><p>Let us connect everything. PESTLE and the 5C's show a market at war on price, so Subway has to defend value and keep the Fresh Value Menu visible. SWOT shows that the brand and the network are strengths but brand perception and product differentiation are weaknesses, so Subway has to prove freshness, not only claim it. Segmentation, targeting and positioning tell us who to win: urban students and young professionals, 18 to 34, who want fast, affordable and customisable meals. And the consumer decision process shows how: win the evaluation stage and then build the habit with Sub Club and the app. Our recommendation in one sentence: Subway should turn its scale into a daily habit for value-seeking urban lunch customers. More repeat visits mean higher sales per store, which is exactly what franchisees need.</p>
   <h4>Likely questions</h4><p><b>How would you measure success?</b> Sales per store (today about $500,000), repeat visits through Sub Club, and the share of orders through the app and delivery.</p><p><b>What is the main risk of this recommendation?</b> Value offers that franchisees cannot afford. They already pushed back on discounting, so offers must protect their margins.</p>
   <h4>Sources</h4><p>Synthesis of the previous slides (group doc). Photo: Orkun Orcan on Unsplash.</p></aside>
 </section>
@@ -443,8 +457,7 @@ body.print .slice{filter:none}
     <div><h3>Illustrations</h3><p>Sandwich, ingredients and icons drawn by the group (SVG). No official Subway logo or imagery is used.</p></div>
     <div><h3>Data</h3>
       <p>Group research document (Subway franchise disclosure 2026, company announcements, Guggenheim estimates as cited in the doc).</p>
-      <p>California Department of Industrial Relations: Fast Food Council, AB 1228.</p>
-      <p>Subway: Responsible Sourcing (sustainability pages).</p></div>
+      <p>PESTLE: Atlantic Council, NACP, Subway Newsroom, FoodNavigator, The Moscow Times and others (full links in the speaker notes).</p></div>
     <div><h3>Course</h3><p>Marketing Management: Creating Sustainable Value, EADA Business School. Group X: Kira, Maëa, Naud, Joé, Chelsea.</p></div>
   </div>
 </section>

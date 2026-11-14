@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SUBWAY | Marketing Management Final Presentation</title>
+<style>
+:root{--g:#008938;--dg:#0A3D24;--y:#FFC20D;--cream:#FFF9EC;--ink:#12261B;--mut:#4C6156;--line:#E4DCC6}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#06281A;overflow:hidden;font-family:"Avenir Next","Segoe UI","Helvetica Neue",Arial,sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
+button:focus-visible{outline:5px solid var(--y);outline-offset:4px}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform:translate(-50%,-50%) scale(var(--s,1));overflow:hidden;background:var(--cream)}
+.slide{position:absolute;inset:0;padding:64px 110px 120px;opacity:0;visibility:hidden;transform:translateX(60px);transition:opacity .45s,transform .45s,visibility 0s .45s;background:var(--cream)}
+.slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .45s,transform .45s}
+.slide.past{transform:translateX(-60px)}
+.slide.dark{background:radial-gradient(1200px 800px at 75% 40%,#0F5A33,var(--dg) 70%);color:#fff}
+.notes{display:none}
+
+.kick{font-size:22px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g);display:flex;align-items:center;gap:14px}
+.kick::before{content:"";width:44px;height:6px;border-radius:3px;background:var(--y)}
+h2{font-size:54px;line-height:1.1;font-weight:800;letter-spacing:-.015em;color:var(--dg);max-width:1560px;margin-top:16px}
+.dark h2{color:#fff}
+.def{margin-top:24px;font-size:27px;line-height:1.35;color:var(--mut);max-width:1500px;border-left:6px solid var(--g);padding-left:20px}
+.def b{color:var(--g);text-transform:uppercase;font-size:20px;letter-spacing:.12em;margin-right:10px}
+.owner{position:absolute;left:110px;bottom:84px;font-size:20px;color:var(--mut);font-weight:600}
+.owner b{color:var(--g)}
+.draft{position:absolute;right:110px;top:64px;font-size:18px;font-weight:700;letter-spacing:.06em;padding:8px 16px;border:2px dashed #C98A00;color:#8A5F00;border-radius:999px;background:#FFF3CC}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .4s,transform .4s}
+.rv.on{opacity:1;transform:none}
+.wm{font-weight:900;font-style:italic;letter-spacing:-.03em}
+.wm i{color:var(--y);font-style:inherit}
+
+/* sandwich */
+.sw svg{width:100%;display:block;overflow:visible}
+.ly{opacity:0;transition:transform .2s;cursor:pointer}
+.ly.on{opacity:1;animation:drop .55s cubic-bezier(.3,.7,.4,1) backwards;animation-delay:calc(var(--d,0)*1s)}
+.ly.on:hover,.ly.on.lift{transform:translateY(-12px)}
+@keyframes drop{0%{opacity:0;transform:translateY(-460px)}15%{opacity:1}55%{transform:translateY(0)}72%{transform:translateY(-24px)}86%{transform:translateY(0)}94%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+/* cover */
+.cover{display:grid;grid-template-columns:1fr 760px;align-items:center;gap:40px;padding-bottom:140px}
+.cover .wm{font-size:190px;line-height:.9}
+.cover h1{font-size:46px;font-weight:600;margin-top:26px;line-height:1.2}
+.pill{display:inline-block;background:var(--y);color:var(--dg);font-weight:800;font-size:26px;padding:10px 24px;border-radius:999px;margin-bottom:34px}
+.names{margin-top:44px;font-size:30px;font-weight:600;display:flex;gap:14px;flex-wrap:wrap}
+.names span{border:2px solid rgba(255,255,255,.35);padding:8px 20px;border-radius:999px}
+.school{margin-top:26px;font-size:22px;opacity:.75;letter-spacing:.08em;text-transform:uppercase}
+
+/* agenda */
+.split{display:grid;grid-template-columns:1fr 640px;gap:70px;margin-top:34px}
+.photo{border-radius:28px;overflow:hidden;background:#ddd center/cover;box-shadow:0 30px 60px -30px rgba(10,61,36,.5)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.stat{background:#fff;border:2px solid var(--line);border-radius:22px;padding:24px 26px}
+.stat b{display:block;font-size:68px;font-weight:800;color:var(--g);letter-spacing:-.03em;line-height:1}
+.stat.neg b{color:#C8372D}
+.stat span{display:block;font-size:22px;color:var(--mut);margin-top:10px;line-height:1.25}
+.kq{margin-top:28px;background:var(--dg);color:#fff;border-radius:22px;padding:26px 32px;font-size:36px;font-weight:700;line-height:1.2}
+.kq small{display:block;font-size:19px;letter-spacing:.14em;text-transform:uppercase;color:var(--y);margin-bottom:8px}
+.flow{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.flow span{font-size:22px;font-weight:700;padding:10px 18px;border-radius:999px;background:#E6F3EA;color:var(--g)}
+.flow span:last-child{background:var(--y);color:var(--dg)}
+
+/* PESTLE */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px;height:560px}
+.tile{perspective:1400px;display:block}
+.tile .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.tile.on .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:24px;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:28px 32px;display:flex;flex-direction:column;justify-content:center}
+.front{background:var(--g);color:#fff}
+.front b{font-size:150px;font-weight:900;line-height:.9;color:var(--y)}
+.front span{font-size:38px;font-weight:700;margin-top:6px}
+.front em{position:absolute;right:26px;bottom:20px;font-style:normal;font-size:18px;opacity:.7}
+.back{background:#fff;border:3px solid var(--g);transform:rotateY(180deg)}
+.back strong{font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.back p{font-size:29px;line-height:1.3;margin-top:12px;font-weight:500}
+
+/* SWOT */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px;height:580px}
+.q{border-radius:24px;padding:26px 34px;position:relative;transition:transform .3s,opacity .3s,box-shadow .3s;display:block;overflow:hidden}
+.q h3{font-size:36px;font-weight:800;display:flex;align-items:center;gap:14px}
+.q li{font-size:27px;line-height:1.3;margin:10px 0 0 26px;font-weight:500}
+.q svg{position:absolute;right:26px;top:22px;width:110px;height:110px;opacity:.9;transition:transform .3s}
+.q.s{background:var(--g);color:#fff}.q.w{background:#fff;border:3px solid var(--line)}
+.q.o{background:var(--y);color:var(--dg)}.q.t{background:var(--dg);color:#fff}
+.q.cur,.q:hover{transform:scale(1.045);z-index:2;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+.q.cur svg,.q:hover svg{transform:scale(1.25) rotate(-8deg)}
+.swot:has(.cur) .q:not(.cur),.swot:hover .q:not(:hover){opacity:.5}
+
+/* 5C */
+.sub{display:flex;gap:12px;margin-top:30px;height:210px}
+.slice{flex:1;display:flex;flex-direction:column;transition:transform .3s,filter .3s;filter:saturate(.45) brightness(1.05);position:relative}
+.slice.on{filter:none;transform:translateY(-10px)}
+.slice:hover{filter:none}
+.slice i{display:block}
+.slice .tb{flex:1;background:#E3A857;border-radius:16px 16px 6px 6px;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:32px;font-weight:800;color:#5B3A10}
+.slice .me{height:22px;background:#C96A5A;margin:0 -4px;border-radius:8px}
+.slice .ch{height:12px;background:var(--y);margin:0 -7px}
+.slice .to{height:18px;background:#E03C31;margin:0 6px;border-radius:9px}
+.slice .le{height:16px;background:#5DB13B;margin:0 -9px;border-radius:0 0 14px 14px}
+.slice .bb{height:44px;background:#E3A857;border-radius:6px 6px 34px 34px;border-bottom:8px solid #C98A3F}
+.slice:first-child .tb{border-top-left-radius:110px 120px}.slice:last-child .tb{border-top-right-radius:110px 120px}.slice:not(:first-child) .bb{border-bottom-left-radius:6px}.slice:not(:last-child) .bb{border-bottom-right-radius:6px}
+.cards{display:flex;gap:12px;margin-top:22px}
+.card{flex:1;background:#fff;border:2px solid var(--line);border-top:8px solid var(--g);border-radius:18px;padding:20px 22px;font-size:24px;line-height:1.32;min-height:230px}
+.card b{color:var(--g)}
+
+/* STP */
+.persona{display:grid;grid-template-columns:430px 1fr;background:#fff;border:2px solid var(--line);border-radius:28px;overflow:hidden;margin-top:28px;height:470px;box-shadow:0 30px 60px -36px rgba(10,61,36,.5)}
+.persona .ph{background:#ccc url(img/p1.jpg) 30% 88%/190% auto}
+.persona .tx{padding:34px 44px}
+.persona small{font-size:20px;letter-spacing:.14em;text-transform:uppercase;color:var(--g);font-weight:700}
+.persona h3{font-size:44px;font-weight:800;color:var(--dg);margin-top:6px;line-height:1.1}
+.persona p{font-size:27px;line-height:1.35;margin-top:14px;color:var(--mut)}
+.chips{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.chips span{font-size:25px;font-weight:700;padding:10px 20px;border-radius:999px;background:#E6F3EA;color:var(--g)}
+.segs{display:flex;gap:16px;margin-top:20px}
+.segs div{flex:1;font-size:23px;line-height:1.3;padding:14px 18px;border-radius:16px;border:2px solid var(--line);background:#fff;color:var(--mut)}
+.segs div.pick{border-color:var(--g);background:#E6F3EA;color:var(--dg);font-weight:700}
+.state{margin-top:40px;background:var(--dg);color:#fff;border-radius:30px;padding:54px 64px;font-size:46px;line-height:1.34;font-weight:600;position:relative}
+.state .w{opacity:0;transition:opacity .05s linear;transition-delay:calc(var(--i)*45ms)}
+.active .state .w{opacity:1}
+.state u{text-decoration:none;color:var(--y)}
+.state::after{content:"";display:inline-block;width:5px;height:44px;background:var(--y);margin-left:8px;vertical-align:-6px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.legend{display:flex;gap:16px;margin-top:26px}
+.legend div{flex:1;font-size:24px;line-height:1.3;padding:16px 20px;border-radius:16px;background:#fff;border:2px solid var(--line)}
+.legend b{display:block;color:var(--g);font-size:19px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+
+/* CDP */
+.cdp{display:grid;grid-template-columns:720px 1fr;gap:60px;margin-top:10px}
+.cdp .left{position:relative;height:690px}
+.cdp .sw{width:700px;position:absolute;left:0;top:50px}
+.below{position:absolute;left:0;right:0;top:450px;height:170px}
+.done{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.done span{background:var(--g);color:#fff;font-size:29px;font-weight:800;padding:18px 30px;white-space:nowrap;border-radius:999px;position:relative;box-shadow:0 18px 40px -22px rgba(0,0,0,.45)}
+.done i{position:absolute;left:50%;top:50%;width:12px;height:12px;border-radius:50%;opacity:0}
+.done.on i{animation:pop .6s ease-out forwards}
+@keyframes pop{0%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(.4)}}
+.detail{position:absolute;inset:0;background:#fff;border:3px solid var(--g);border-radius:20px;padding:18px 24px;font-size:24px;line-height:1.32;opacity:0;transition:opacity .2s;pointer-events:none;display:flex;align-items:center}
+.detail.show{opacity:1}
+.stages{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.st{display:flex;gap:18px;align-items:flex-start;font-size:26px;line-height:1.3;padding:12px 18px;border-radius:16px;border:2px solid transparent;transition:opacity .4s,transform .4s,background .2s,border-color .2s;width:100%}
+.st.hl{background:#fff;border-color:var(--g)}
+.st .n{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:24px;color:#fff}
+.st b{color:var(--dg)}
+
+/* conclusions */
+.cc{display:grid;grid-template-columns:1fr 600px;gap:60px;margin-top:34px;align-items:center}
+.pts{display:flex;flex-direction:column;gap:18px}
+.pt{display:flex;gap:22px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:20px;padding:22px 28px;font-size:31px;line-height:1.25;font-weight:600}
+.pt .n{flex:none;width:58px;height:58px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center;font-weight:800;font-size:28px}
+.pt small{display:block;font-size:19px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:2px}
+.slidein{transform:translateX(-700px) rotate(-6deg);opacity:0;transition:transform .55s cubic-bezier(.2,.8,.3,1.1),opacity .3s}
+.active .slidein{transform:none;opacity:1}
+.hero{position:absolute;inset:0;background:url(img/sub2.jpg) center/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,40,26,.96) 0,rgba(6,40,26,.9) 48%,rgba(6,40,26,.25) 100%)}
+.over{position:relative;z-index:1}
+.dark .pt{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff;max-width:1120px;backdrop-filter:blur(6px)}
+.dark .pt .n{background:var(--y);color:var(--dg)}.dark .pt small{color:var(--y)}
+.dark .kick{color:var(--y)}.dark .owner{color:rgba(255,255,255,.75)}.dark .owner b{color:var(--y)}
+.qa{display:grid;grid-template-columns:1fr 560px;gap:60px;align-items:center;height:100%}
+.qa h2{font-size:92px}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:44px;max-width:900px}
+.team div{font-size:26px;padding:14px 22px;border-radius:16px;background:rgba(255,255,255,.1)}
+.team b{color:var(--y);display:block;font-size:30px}
+.cred{columns:2;column-gap:60px;margin-top:34px;font-size:24px;line-height:1.4}
+.cred h3{font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin:0 0 10px}
+.cred p{margin-bottom:12px;break-inside:avoid}
+.cred div{break-inside:avoid;margin-bottom:30px}
+
+/* chrome */
+#bar{position:absolute;left:0;right:0;bottom:0;height:66px;display:flex;align-items:center;justify-content:center;gap:14px;z-index:5;color:var(--mut)}
+#bar .dot{width:16px;height:16px;border-radius:50%;background:rgba(18,38,27,.2);transition:all .3s}
+#bar .dot.cur{width:44px;border-radius:8px;background:var(--g)}
+#stage.isdark #bar{color:rgba(255,255,255,.8)}
+#stage.isdark #bar .dot{background:rgba(255,255,255,.3)}#stage.isdark #bar .dot.cur{background:var(--y)}
+#count{position:absolute;left:110px;font-size:20px;font-weight:700}
+#mini{position:absolute;right:110px;bottom:6px;width:86px}
+#mini .ly{cursor:default}
+#help{position:absolute;right:210px;font-size:16px;opacity:.6}
+#ov{position:fixed;left:0;right:0;bottom:0;max-height:46vh;overflow:auto;background:rgba(10,20,15,.96);color:#fff;padding:18px 28px;z-index:20;display:none;font-size:17px;line-height:1.45}
+#ov.show{display:block}
+
+/* print / PDF */
+body.print{overflow:visible;height:auto;background:#fff}
+body.print #stage{position:static;transform:none;height:auto;overflow:visible}
+body.print .slide{position:relative;inset:auto;width:1920px;height:1080px;opacity:1;visibility:visible;transform:none;break-after:page;overflow:hidden}
+body.print *{animation:none!important;transition:none!important}
+body.print .rv,body.print .ly,body.print .state .w,body.print .slidein{opacity:1;transform:none}
+body.print .tile .in{transform:none}body.print .tile .front{display:none}body.print .tile .back{transform:none}
+body.print .state::after,body.print #bar,body.print #ov,body.print .detail{display:none}
+body.print .slice{filter:none}
+@page{size:1920px 1080px;margin:0}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 COVER -->
+<section class="slide dark cover" data-sec="0" data-title="Cover">
+  <div>
+    <span class="pill">Group X</span>
+    <div class="wm"><i>SUB</i>WAY</div>
+    <h1>Marketing Management<br>Final Presentation</h1>
+    <div class="names"><span>Kira</span><span>Maëa</span><span>Naud</span><span>Joé</span><span>Chelsea</span></div>
+    <div class="school">EADA Business School</div>
+  </div>
+  <div class="sw auto" data-sw></div>
+  <aside class="notes"><p>Welcome everyone. We are Group X: Kira, Maëa, Naud, Joé and Chelsea. In the next 10 minutes we apply the key frameworks of the course to one brand: Subway.</p><p><i>Reminder: replace "Group X" with the real group number.</i></p></aside>
+</section>
+
+<!-- 2 AGENDA -->
+<section class="slide" data-sec="0" data-title="Storyline">
+  <div class="kick">Storyline</div>
+  <h2>Subway is still the top sandwich chain, but it is shrinking in its home market</h2>
+  <div class="split">
+    <div>
+      <div class="stats">
+        <div class="stat"><b>35,800</b><span>restaurants worldwide (about)</span></div>
+        <div class="stat neg"><b>-6%</b><span>US system sales in 2025, to $8.9 billion</span></div>
+        <div class="stat"><b>+13%</b><span>Jersey Mike's system sales in 2025</span></div>
+      </div>
+      <div class="kq"><small>The key question</small>How can Subway become the automatic lunch choice again?</div>
+      <div class="flow"><span>PESTLE</span><span>SWOT</span><span>5C's</span><span>Segmentation, targeting, positioning</span><span>Consumer decision process</span><span>Recommendation</span></div>
+    </div>
+    <div class="photo" style="background-image:url(img/hero.jpg);height:560px"></div>
+  </div>
+  <aside class="notes"><p>Subway has about 35,800 restaurants worldwide and is still the top sandwich chain by far. But in the US, its home market, system sales fell about 6% in 2025 to $8.9 billion, after a 3.8% fall in 2024. At the same time its closest rival, Jersey Mike's, grew 13%.</p><p>So our key question is: how can Subway become the automatic lunch choice again? We answer it in five steps: the macro environment with PESTLE, then SWOT, the 5C's, segmentation, targeting and positioning, and finally the consumer decision process, before one recommendation.</p><h4>Sources</h4><p>All figures come from the group doc (5C's section).</p></aside>
+</section>
+
+<!-- 3 PESTLE -->
+<section class="slide" data-sec="1" data-steps="6" data-owner="Chelsea" data-title="PESTLE">
+  <div class="kick">PESTLE</div>
+  <div class="draft">DRAFT, to validate by Chelsea</div>
+  <h2>External forces push Subway toward value, freshness and digital convenience</h2>
+  <p class="def"><b>Definition</b>PESTLE scans the macro-environment a company cannot control: Political, Economic, Social, Technological, Legal and Environmental forces.</p>
+  <div class="tiles">
+    <button class="tile" data-at="1"><div class="in"><div class="face front"><b>P</b><span>Political</span><em>click to flip</em></div><div class="face back"><strong>Political</strong><p>Wage laws raise franchisee costs: California set a $20 minimum wage for fast-food workers from April 2024.</p></div></div></button>
+    <button class="tile" data-at="2"><div class="in"><div class="face front"><b>E</b><span>Economic</span></div><div class="face back"><strong>Economic</strong><p>Cost-conscious consumers push chains into value wars. Food, rent and labour costs squeeze franchisee margins.</p></div></div></button>
+    <button class="tile" data-at="3"><div class="in"><div class="face front"><b>S</b><span>Social</span></div><div class="face back"><strong>Social</strong><p>Rising interest in protein and “fresh” food fits Subway's “freshly made, never fried” positioning.</p></div></div></button>
+    <button class="tile" data-at="4"><div class="in"><div class="face front"><b>T</b><span>Technological</span></div><div class="face back"><strong>Technological</strong><p>Digital ordering and delivery are becoming standard. The EMEA “Blueprint” format (from 2027) is built around kiosks and the app.</p></div></div></button>
+    <button class="tile" data-at="5"><div class="in"><div class="face front"><b>L</b><span>Legal</span></div><div class="face back"><strong>Legal</strong><p>Franchise relationship rules and disclosure requirements. Subway has had many franchisee disputes.</p></div></div></button>
+    <button class="tile" data-at="6"><div class="in"><div class="face front"><b>E</b><span>Environmental</span></div><div class="face back"><strong>Environmental</strong><p>Sourcing and packaging are under scrutiny. Subway reports 100% cage-free eggs in the US and Canada since November 2025.</p></div></div></button>
+  </div>
+  <div class="owner">Presented by <b>Chelsea</b></div>
+  <aside class="notes"><p>PESTLE looks at the macro forces a company cannot control. For Subway, six stand out. Political: wage legislation, such as California's $20 minimum wage for fast-food workers, raises costs for franchisees. Economic: consumers are cost-conscious, which pushes all chains into a value war, while food, rent and labour costs squeeze franchisee margins. Social: growing interest in protein and fresh food fits Subway's positioning. Technological: digital ordering and delivery are now standard, and the new EMEA Blueprint format from 2027 is built around kiosks and the app. Legal: franchise rules and disclosure requirements matter because Subway has had many franchisee disputes. Environmental: sourcing and packaging are under scrutiny. Overall, the environment pushes Subway toward value, freshness and digital convenience.</p>
+  <h4>Likely questions</h4><p><b>Which factor matters most for Subway today?</b> Economic. The value war drives its biggest move, the first-ever Fresh Value Menu (15 items under $5, April 2026).</p><p><b>How do wage laws affect a franchisor that owns no US stores?</b> Subway is fully franchised, so higher wages hit franchisees, whose economics are already weak. That limits how much discounting they accept.</p>
+  <h4>Sources (DRAFT slide)</h4><p>Economic, Social, Technological, Legal: group doc, 5C's "Context" table. Political: California Department of Industrial Relations, Fast Food Council page on AB 1228 (dir.ca.gov/AB1228). Environmental: Subway "Responsible Sourcing" page (subway.com, sustainability section).</p></aside>
+</section>
+
+<!-- 4 SWOT -->
+<section class="slide" data-sec="2" data-steps="4" data-owner="Kira" data-title="SWOT">
+  <div class="kick">SWOT</div>
+  <div class="draft">DRAFT, to validate by Kira</div>
+  <h2>Scale is Subway's biggest strength, but weak store economics leave it exposed</h2>
+  <p class="def"><b>Definition</b>SWOT sums up a brand's internal Strengths and Weaknesses and its external Opportunities and Threats.</p>
+  <div class="swot">
+    <button class="q s" data-only="1"><h3>Strengths</h3><ul><li>Largest US restaurant footprint by count</li><li>Low-cost, small-format model</li><li>Strong brand awareness</li></ul>
+      <svg viewBox="0 0 100 100"><path d="M8 62C8 30 28 22 50 22s42 8 42 40q0 6-6 6H14q-6 0-6-6z" fill="#E3A857"/><path d="M30 34l8 8M48 30l8 8M66 34l8 8" stroke="#C98A3F" stroke-width="5" stroke-linecap="round"/></svg></button>
+    <button class="q w" data-only="2"><h3>Weaknesses</h3><ul><li>About $500,000 average sales per store</li><li>Shrinking US base, strained franchisees</li><li>Leadership turnover</li></ul>
+      <svg viewBox="0 0 100 100"><path d="M8 70L92 30v40z" fill="#FFC20D"/><circle cx="62" cy="58" r="7" fill="#fff"/><circle cx="80" cy="50" r="4.5" fill="#fff"/><circle cx="40" cy="64" r="4" fill="#fff"/></svg></button>
+    <button class="q o" data-only="3"><h3>Opportunities</h3><ul><li>12,000+ future international units committed</li><li>Protein and “fresh” food trend</li><li>Delivery and digital ordering growth</li></ul>
+      <svg viewBox="0 0 100 100"><path d="M50 90C14 78 10 40 22 14c30 4 58 22 54 56-2 12-12 18-26 20z" fill="#3E9B2E"/><path d="M50 90C46 62 38 40 26 20" stroke="#BFE6A8" stroke-width="4" fill="none" stroke-linecap="round"/></svg></button>
+    <button class="q t" data-only="4"><h3>Threats</h3><ul><li>Jersey Mike's: sales up 13%, fresh IPO capital</li><li>Sector-wide value war (McDonald's, Taco Bell)</li><li>Flat category: rivals' gains are Subway's losses</li></ul>
+      <svg viewBox="0 0 100 100"><path d="M22 34c10-8 22-6 30 6 12 18 26 30 40 36-22 10-50 2-64-18-6-10-8-18-6-24z" fill="#E03C31"/><path d="M24 34c-2-10 2-18 10-22" stroke="#5DB13B" stroke-width="7" fill="none" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="owner">Presented by <b>Kira</b></div>
+  <aside class="notes"><p>SWOT sums up internal strengths and weaknesses and external opportunities and threats. Subway's strengths are about scale: the largest US restaurant footprint by count, a low-cost small-format model and strong brand awareness. Its weaknesses are about economics: average sales per store are around $500,000, far below Jersey Mike's at about $1.36 million. The US base is shrinking, franchisees are strained and leadership changed again in July 2025. The opportunities are international growth, with more than 12,000 future units committed by master franchisees, plus the protein and fresh trend and growth in delivery. The threats: Jersey Mike's is growing 13% with fresh IPO capital, the whole sector is in a value war, and the sandwich category is flat, so every gain by a rival comes at Subway's expense.</p>
+  <h4>Likely questions</h4><p><b>What is the single biggest weakness?</b> Sales per store: about $500,000 versus about $1.36 million at Jersey Mike's. It weakens franchisees and everything that depends on them.</p><p><b>Which opportunity is most realistic?</b> International growth: over 30 master franchise agreements and 12,000+ committed units, including about 400 restaurants in Spain with Grupo Vierci.</p>
+  <h4>Sources (DRAFT slide)</h4><p>Built entirely from the group doc: Naud's 5C's (Company strengths and weaknesses, Competitors, Collaborators, Context) and Joé's Consumer Decision Process notes. No external figures added.</p></aside>
+</section>
+
+<!-- 5 5C -->
+<section class="slide" data-sec="3" data-steps="5" data-owner="Naud" data-title="5C's">
+  <div class="kick">5C's</div>
+  <h2>Subway has global scale, but must fix franchisee profitability before Jersey Mike's takes more share</h2>
+  <p class="def"><b>Definition</b>The 5C's analyse a brand's situation: Company, Customers, Competitors, Collaborators and Context.</p>
+  <div class="sub">
+    <button class="slice" data-at="1"><i class="tb">Company</i><i class="me"></i><i class="ch"></i><i class="to"></i><i class="le"></i><i class="bb"></i></button>
+    <button class="slice" data-at="2"><i class="tb">Customers</i><i class="me"></i><i class="ch"></i><i class="to"></i><i class="le"></i><i class="bb"></i></button>
+    <button class="slice" data-at="3"><i class="tb">Competitors</i><i class="me"></i><i class="ch"></i><i class="to"></i><i class="le"></i><i class="bb"></i></button>
+    <button class="slice" data-at="4"><i class="tb">Collaborators</i><i class="me"></i><i class="ch"></i><i class="to"></i><i class="le"></i><i class="bb"></i></button>
+    <button class="slice" data-at="5"><i class="tb">Context</i><i class="me"></i><i class="ch"></i><i class="to"></i><i class="le"></i><i class="bb"></i></button>
+  </div>
+  <div class="cards">
+    <div class="card rv" data-at="1">Fully franchised. About <b>35,800 units</b> and <b>$16 billion</b> global sales, but US sales fell about <b>6%</b> in 2025.</div>
+    <div class="card rv" data-at="2">Value seekers, office workers and students. They want <b>price, speed, customisation</b>, freshness and protein.</div>
+    <div class="card rv" data-at="3"><b>Jersey Mike's</b>: sales up 13%, about <b>$1.36 million</b> per store versus about $500,000 at Subway.</div>
+    <div class="card rv" data-at="4">US franchisees are strained. Master franchisees drive growth: <b>12,000+ future units</b>, about 400 in Spain.</div>
+    <div class="card rv" data-at="5">A sector-wide <b>value war</b>, cost-conscious consumers, digital ordering and delivery as standard.</div>
+  </div>
+  <div class="owner">Presented by <b>Naud</b></div>
+  <aside class="notes"><p>The 5C's give a full picture of the situation. Company: Subway is fully franchised, owned by Roark Capital since 2024, with about 35,800 units and $16 billion in global sales. But US system sales fell about 6% to $8.9 billion in 2025. Customers: value-seeking diners, office workers and students who want price, speed, customisation and a perception of freshness and protein. Competitors: Jersey Mike's is the rising threat, with $4.3 billion in sales, up 13%, and about $1.36 million per store. McDonald's and Taco Bell attack on value. Collaborators: US franchisees are the critical partner and a strained one, while master franchisees are the new growth engine with over 12,000 future units, including about 400 in Spain with Grupo Vierci. Context: a sector-wide value war. To conclude: Subway has scale and an international pipeline, but at home it is shrinking. The key question is whether it can make franchisees profitable again before Jersey Mike's takes more share.</p>
+  <h4>Likely questions</h4><p><b>Why are franchisees strained?</b> Average store sales are around $500,000, with an 8% royalty and a 4.5% ad fund. Franchisees of over a quarter of stores petitioned against the Sub Club offer as too generous (revised April 1, 2026), and several operators filed for bankruptcy.</p><p><b>Why is Jersey Mike's the main threat if Subway is six times bigger by store count?</b> The top 15 sandwich brands' sales were roughly flat in 2025 (Guggenheim), so its 13% growth comes at Subway's expense. It also listed on the NYSE in July 2026 at a $7.3 billion valuation.</p></aside>
+</section>
+
+<!-- 6 STP 1 -->
+<section class="slide" data-sec="4" data-owner="Maëa" data-title="Segmentation and targeting">
+  <div class="kick">Segmenting and targeting</div>
+  <div class="draft">DRAFT, to validate by Maëa</div>
+  <h2>Subway targets consumers seeking convenience, value &amp; choice</h2>
+  <p class="def"><b>Definition</b>Segmentation divides the market into groups with similar needs. Targeting chooses which group to serve first.</p>
+  <div class="persona">
+    <div class="ph"></div>
+    <div class="tx">
+      <small>Target persona</small>
+      <h3>Urban students &amp; young professionals (18 to 34)</h3>
+      <p>A student in Barcelona has 30 minutes between classes and wants something quick, filling and not too expensive.</p>
+      <div class="chips"><span>Convenience</span><span>Value</span><span>Choice</span></div>
+      <div class="segs"><div>Value-seeking diners</div><div class="pick">Students and office workers wanting a quick lunch</div><div>“Healthier” fast-food seekers</div></div>
+    </div>
+  </div>
+  <div class="owner">Presented by <b>Maëa</b></div>
+  <aside class="notes"><p>Segmentation means dividing the market into groups of consumers with similar needs. Targeting means choosing which of those groups the brand serves first. Subway's customers fall into three main segments: value-seeking diners, office workers and students who want a quick lunch, and people looking for a healthier fast-food option. Our target is urban students and young professionals aged 18 to 34. They look for three things: convenience, value and choice. Picture a student in Barcelona with 30 minutes between classes who wants something quick, filling and not too expensive. That is the lunch moment Subway is built for.</p>
+  <h4>Likely questions</h4><p><b>Which segmentation bases did you use?</b> Demographic (age 18 to 34, students and young professionals), geographic (urban), and behavioural (the quick lunch occasion, value-seeking).</p><p><b>Why this target and not families?</b> Their needs (price, speed, customisation) match what Subway offers, and they live and work where Subway stores are: stations, campuses and malls.</p>
+  <h4>Sources (DRAFT elements)</h4><p>Title and target are Maëa's. The definition, the three segments (from Naud's "Customers" table) and the Barcelona example (from Joé's notes) were added from the group doc. Photo: KC Shum on Unsplash.</p></aside>
+</section>
+
+<!-- 7 STP 2 -->
+<section class="slide" data-sec="4" data-owner="Maëa" data-title="Brand positioning">
+  <div class="kick">Brand positioning statement</div>
+  <h2>Subway wins through convenience &amp; customisation</h2>
+  <p class="def"><b>Definition</b>A positioning statement says who the brand is for, what category it competes in and why it is different.</p>
+  <div class="state" id="state">For <u>busy, everyday consumers</u> seeking convenient, affordable, and customizable meals, Subway is the <u>quick-service restaurant</u> that offers <u>freshly made, customizable sandwiches and salads</u>, delivering accessible quality and a fresher alternative to traditional fast food.</div>
+  <div class="legend">
+    <div><b>Target</b>Busy, everyday consumers</div>
+    <div><b>Category</b>Quick-service restaurant</div>
+    <div><b>Point of difference</b>Freshly made and customisable</div>
+    <div><b>Benefit</b>Accessible quality, a fresher alternative</div>
+  </div>
+  <div class="owner">Presented by <b>Maëa</b></div>
+  <aside class="notes"><p>A positioning statement says who the brand is for, what category it competes in and why it is different. Here is Subway's: for busy, everyday consumers seeking convenient, affordable and customizable meals, Subway is the quick-service restaurant that offers freshly made, customizable sandwiches and salads, delivering accessible quality and a fresher alternative to traditional fast food. The target is busy everyday consumers. The category is quick-service restaurants. The point of difference is freshly made and customisable: you build your own sandwich. And the benefit is accessible quality. So Subway wins through convenience and customisation.</p>
+  <h4>Likely questions</h4><p><b>What is Subway's point of difference versus burger chains?</b> "Freshly made, never fried" and full customisation, with many items above 20 grams of protein.</p><p><b>Is this positioning still credible against Jersey Mike's?</b> That is the risk: Subway is perceived as lower quality than newer sandwich rivals, so it has to prove freshness, not only claim it.</p></aside>
+</section>
+
+<!-- 8 CDP -->
+<section class="slide" data-sec="5" data-steps="6" data-owner="Joé" data-title="Consumer Decision Process">
+  <div class="kick">Consumer Decision Process Model</div>
+  <h2>Subway wins the lunch decision when it is the fastest, cheapest and most flexible option</h2>
+  <div class="cdp">
+    <div class="left">
+      <div class="sw" data-sw="1,2,3,3,4,5"></div>
+      <div class="below">
+        <div class="done rv" data-at="6" id="done"><span>Order complete: Subway becomes the habit</span></div>
+        <div class="detail" id="detail"></div>
+      </div>
+    </div>
+    <div>
+      <p class="def" style="margin-top:14px"><b>Definition</b>the 5 stages a consumer goes through before and after a purchase. For a fast-food lunch, it happens in minutes and is often driven by habit.</p>
+      <div class="stages">
+        <button class="st rv" data-at="1" data-d="How Subway activates the need: app push notifications, lunchtime social media posts and visible stores in stations, campuses and malls."><span class="n" style="background:#C98A3F">1</span><span><b>Need recognition:</b> hungry, short lunch break, wants something quick and “lighter”</span></button>
+        <button class="st rv" data-at="2" data-d="How Subway influences it: a large footprint means it often appears first on maps, it is on all delivery marketplaces, and prices and deals are visible in the app."><span class="n" style="background:#3E9B2E">2</span><span><b>Information search:</b> Google Maps, delivery apps, Subway app, social media, past visits</span></button>
+        <button class="st rv" data-at="3" data-d="Advantage: “freshly made, never fried”, fully customisable, protein-rich. Weakness: perceived lower quality than newer sandwich rivals and strong burger value deals."><span class="n" style="background:#E03C31">3</span><span><b>Evaluation of alternatives:</b> price, speed, customisation, freshness vs McDonald’s, Jersey Mike’s, Chipotle, local bocadillo</span></button>
+        <button class="st rv" data-at="4" data-d="Risk at this stage: a long queue, a closed or empty store, or a better deal from a competitor can still change the decision at the last second."><span class="n" style="background:#B8574A">4</span><span><b>Purchase decision:</b> in store, app/kiosk or delivery; pushed by Fresh Value Menu (15 items under $5) and Sub Club</span></button>
+        <button class="st rv" data-at="5" data-d="How Subway manages it: Sub Club points, app feedback and online reviews that feed the next customers' information search. This closes the loop back to stage 1."><span class="n" style="background:#C98A3F">5</span><span><b>Post-purchase behaviour:</b> satisfied = repeat habit; disappointed = regret and negative reviews</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="owner">Presented by <b>Joé</b></div>
+  <aside class="notes">
+    <div data-k="0"><p><b>Definition.</b> The Consumer Decision Process Model describes the five stages a consumer goes through before and after buying: (1) need recognition, (2) information search, (3) evaluation of alternatives, (4) purchase decision and (5) post-purchase behaviour. Marketers use it to understand where they can influence the customer at each step. For a low-involvement, habitual purchase like a fast-food lunch, the stages happen in minutes and the consumer often skips straight from need to purchase, which makes habit, availability and loyalty very important.</p></div>
+    <div data-k="1"><p><b>1. Need recognition.</b> Trigger: hunger at lunchtime, a short break between classes or meetings, or a craving for something “lighter” than burgers and fries. Subway example: a student in Barcelona has 30 minutes between classes and wants something quick, filling and not too expensive. How Subway activates the need: push notifications on the app, lunchtime social media posts, and visible stores in high-traffic areas (stations, campuses, malls).</p></div>
+    <div data-k="2"><p><b>2. Information search.</b> Internal search: memory of past visits (“I know what I order at Subway”). External search: Google Maps (“food near me”), delivery apps (Uber Eats, Glovo, Just Eat), the Subway app, TikTok / Instagram and friends’ recommendations. How Subway influences it: large store footprint means it often appears first on maps, presence on all delivery marketplaces, and menu prices and deals visible in the app.</p></div>
+    <div data-k="3"><p><b>3. Evaluation of alternatives.</b> Key criteria for our target (time-conscious students and young professionals): price, speed, customisation, perceived healthiness / freshness, and taste. Alternatives considered: McDonald’s and Burger King (cheap and fast), Jersey Mike’s (perceived higher quality), Chipotle or salad chains (healthier), and locally a bocadillo shop or supermarket ready meal. Subway’s advantage: “freshly made, never fried”, fully customisable and with protein-rich options. Its weakness: perceived lower quality than newer sandwich rivals and strong value deals from burger chains.</p></div>
+    <div data-k="4"><p><b>4. Purchase decision.</b> Where and how: in store at the counter (the customer builds the sandwich step by step), via the app or kiosk, or through delivery. What pushes the final choice: the Fresh Value Menu (15 items under $5, launched April 2026), Sub Club loyalty rewards, and the speed of the line at that moment. Risk factors at this stage: a long queue, a closed or empty store, or a better deal from a competitor can still change the decision at the last second.</p></div>
+    <div data-k="5"><p><b>5. Post-purchase behaviour.</b> Satisfaction: if the sandwich was fresh, fast and good value, the customer is likely to repeat and the purchase becomes a habit. Dissatisfaction / cognitive dissonance: if the bread is dry or the price felt high, the customer may think “I should have gone to Jersey Mike’s” and leave a negative review. How Subway manages it: Sub Club points to bring customers back, app feedback, and online reviews that feed the information search of the next customers. This closes the loop back to stage 1.</p></div>
+    <div data-k="6"><p><b>Wrap.</b> Order complete: when the experience is fresh, fast and good value, Subway becomes the habit and the customer skips the comparison next time. Tip for Q&amp;A: hover or click a layer to bring back the detail of that stage.</p></div>
+    <h4>Likely questions</h4><p><b>Why do you call this a low-involvement decision?</b> A lunch is cheap, frequent and low risk, so the five stages happen in minutes and the customer often goes straight from need to purchase. That is why habit, availability and loyalty matter so much.</p><p><b>At which stage can Subway gain the most?</b> Stage 3, evaluation. Subway is already visible in stages 1 and 2. It has to convince customers that fresh and customisable is worth choosing over cheaper burger deals and higher-quality sandwich rivals.</p>
+  </aside>
+</section>
+
+<!-- 9 CDP conclusion -->
+<section class="slide" data-sec="5" data-steps="4" data-owner="Joé" data-title="Decision process: conclusion">
+  <div class="kick">Consumer Decision Process: conclusion</div>
+  <h2>The lunch battle is won or lost at stage 3, so Subway must become the automatic choice</h2>
+  <div class="cc">
+    <div class="pts">
+      <div class="pt rv" data-at="1"><span class="n">1</span><span>Strong in stages 1 and 2: huge store network and delivery presence = always visible</span></div>
+      <div class="pt rv" data-at="2"><span class="n">2</span><span>Stage 3 is the battleground: cheaper burger deals vs higher-quality sandwich rivals</span></div>
+      <div class="pt rv" data-at="3"><span class="n">3</span><span>Priority: strengthen value perception (Fresh Value Menu) and loyalty (Sub Club)</span></div>
+      <div class="pt rv" data-at="4"><span class="n">4</span><span>Goal: make Subway the automatic choice so customers skip the comparison</span></div>
+    </div>
+    <div class="sw auto slidein" data-sw></div>
+  </div>
+  <div class="owner">Presented by <b>Joé</b></div>
+  <aside class="notes"><p>For Subway, the lunch decision is fast, habitual and highly price-sensitive. Subway is strong in the first two stages thanks to its huge store network and delivery presence, so it is almost always visible when hunger hits. The battle is won or lost in stage 3 (evaluation), where Subway must convince customers that its fresh, customisable offer is worth choosing over cheaper burger deals and higher-quality sandwich rivals. The key marketing priority is therefore to strengthen value perception (Fresh Value Menu) and post-purchase loyalty (Sub Club), so that Subway becomes the automatic, repeated choice and customers skip the comparison altogether.</p>
+  <h4>Likely questions</h4><p><b>How does Sub Club help in this model?</b> It works on stage 5: points bring customers back, repetition builds a habit, and a habit means the customer skips stages 2 and 3 next time.</p><p><b>Is more discounting not a problem for franchisees?</b> Yes, it is a real tension. Franchisees of over a quarter of stores petitioned against the Sub Club offer as too generous and it was revised on April 1, 2026. Value has to be designed so that it stays profitable for them.</p></aside>
+</section>
+
+<!-- 10 OVERALL CONCLUSION -->
+<section class="slide dark" data-sec="6" data-steps="4" data-title="Recommendation">
+  <div class="hero"></div>
+  <div class="draft" style="z-index:2">DRAFT, to validate by the group</div>
+  <div class="over">
+    <div class="kick">Our recommendation</div>
+    <h2 style="max-width:1250px">Subway should turn its scale into a daily habit for value-seeking urban lunch customers</h2>
+    <div class="pts" style="margin-top:40px">
+      <div class="pt rv" data-at="1"><span class="n">1</span><span><small>PESTLE and 5C's</small>Defend value: keep the Fresh Value Menu visible in a market at war on price</span></div>
+      <div class="pt rv" data-at="2"><span class="n">2</span><span><small>SWOT</small>Prove freshness: close the quality perception gap with newer sandwich rivals</span></div>
+      <div class="pt rv" data-at="3"><span class="n">3</span><span><small>Targeting and positioning</small>Own the target: urban 18 to 34s who want fast, affordable and customisable</span></div>
+      <div class="pt rv" data-at="4"><span class="n">4</span><span><small>Consumer decision process</small>Build the habit: Sub Club and the app make Subway the automatic choice</span></div>
+    </div>
+  </div>
+  <aside class="notes"><p>Let us connect everything. PESTLE and the 5C's show a market at war on price, so Subway has to defend value and keep the Fresh Value Menu visible. SWOT shows that scale is the strength but quality perception and store economics are the weakness, so Subway has to prove freshness, not only claim it. Segmentation, targeting and positioning tell us who to win: urban students and young professionals, 18 to 34, who want fast, affordable and customisable meals. And the consumer decision process shows how: win the evaluation stage and then build the habit with Sub Club and the app. Our recommendation in one sentence: Subway should turn its scale into a daily habit for value-seeking urban lunch customers. More repeat visits mean higher sales per store, which is exactly what franchisees need.</p>
+  <h4>Likely questions</h4><p><b>How would you measure success?</b> Sales per store (today about $500,000), repeat visits through Sub Club, and the share of orders through the app and delivery.</p><p><b>What is the main risk of this recommendation?</b> Value offers that franchisees cannot afford. They already pushed back on discounting, so offers must protect their margins.</p>
+  <h4>Sources</h4><p>Synthesis of the previous slides (group doc). Photo: Orkun Orcan on Unsplash.</p></aside>
+</section>
+
+<!-- 11 Q&A -->
+<section class="slide dark" data-sec="6" data-title="Thank you / Q&amp;A">
+  <div class="qa">
+    <div>
+      <div class="kick">Group X</div>
+      <h2>Thank you. We are ready for your questions.</h2>
+      <div class="team">
+        <div><b>Chelsea</b>PESTLE</div><div><b>Kira</b>SWOT</div><div><b>Naud</b>5C's</div><div><b>Maëa</b>Segmentation, targeting, positioning</div><div><b>Joé</b>Consumer decision process</div><div><b class="wm" style="font-size:34px"><i>SUB</i><span style="color:#fff">WAY</span></b>Marketing Management, EADA</div>
+      </div>
+    </div>
+    <div class="sw auto" data-sw></div>
+  </div>
+  <aside class="notes"><p>Thank you. Each of us answers questions on our own part: Chelsea on PESTLE, Kira on SWOT, Naud on the 5C's, Maëa on segmentation, targeting and positioning, Joé on the consumer decision process.</p><p>Navigation tips for Q&amp;A: click a dot at the bottom to jump to any slide. Up and Down arrows jump between slides without replaying each step. On the sandwich slide, hover or click a layer to bring back the detail.</p></aside>
+</section>
+
+<!-- 12 CREDITS -->
+<section class="slide" data-sec="6" data-title="Credits and sources">
+  <div class="kick">Credits and sources</div>
+  <h2>Photos are royalty-free and every figure comes from our group research</h2>
+  <div class="cred">
+    <div><h3>Photos (Unsplash licence)</h3>
+      <p>Sub sandwich on a wooden board: Raphael Nogueira</p>
+      <p>Sandwich with lettuce, tomato and cheese: Orkun Orcan</p>
+      <p>Person at a table with headphones: KC Shum</p></div>
+    <div><h3>Illustrations</h3><p>Sandwich, ingredients and icons drawn by the group (SVG). No official Subway logo or imagery is used.</p></div>
+    <div><h3>Data</h3>
+      <p>Group research document (Subway franchise disclosure 2026, company announcements, Guggenheim estimates as cited in the doc).</p>
+      <p>California Department of Industrial Relations: Fast Food Council, AB 1228.</p>
+      <p>Subway: Responsible Sourcing (sustainability pages).</p></div>
+    <div><h3>Course</h3><p>Marketing Management, EADA Business School. Group X: Kira, Maëa, Naud, Joé, Chelsea.</p></div>
+  </div>
+</section>
+
+<div id="bar"><span id="count"></span><span id="dots" style="display:flex;gap:10px"></span><span id="help">N: notes</span><div id="mini" class="sw" data-sw></div></div>
+</div>
+<div id="ov"></div>
+
+<script>
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+// ---- sandwich illustration: 6 layers, bottom to top
+const LY=[
+ `<path d="M48 332h504a28 28 0 0 1 28 28v8a34 34 0 0 1-34 34H54a34 34 0 0 1-34-34v-8a28 28 0 0 1 28-28z" fill="#E3A857"/><path d="M22 378a34 34 0 0 0 32 24h492a34 34 0 0 0 32-24z" fill="#C98A3F" opacity=".6"/>`,
+ `<path d="M12 304H588V322q-12 26-24 0${'t-24 0'.repeat(23)}z" fill="#5DB13B"/><path d="M588 322q-12 26-24 0${'t-24 0'.repeat(23)}" fill="none" stroke="#8FD468" stroke-width="5"/>`,
+ [0,1,2,3,4].map(i=>`<rect x="${34+i*108}" y="280" width="100" height="26" rx="13" fill="#E03C31"/><rect x="${44+i*108}" y="285" width="80" height="6" rx="3" fill="#F47B6E"/>`).join(''),
+ `<path d="M22 262H578V276L540 298L502 276H372L334 296L296 276H176L140 294L104 276H22z" fill="#FFC20D"/><path d="M22 262H578v6H22z" fill="#FFD95A"/>`,
+ `<rect x="26" y="230" width="548" height="34" rx="10" fill="#B8574A"/><path d="M32 251q22.5-12 45 0${'t45 0'.repeat(11)}" fill="none" stroke="#E79A8B" stroke-width="5" stroke-linecap="round"/>`,
+ `<path d="M32 226C32 160 110 140 300 140s268 20 268 86q0 12-12 12H44q-12 0-12-12z" fill="#E3A857"/><path d="M34 214q0 24 12 24h508q12 0 12-24z" fill="#C98A3F" opacity=".5"/><path d="M110 178q80-22 190-22" fill="none" stroke="#F6CE8E" stroke-width="10" stroke-linecap="round" opacity=".8"/>`+
+ [[190,186,20],[260,170,-15],[340,180,30],[410,168,-25],[465,190,10],[140,206,-20],[250,204,15],[375,205,-10],[490,212,25]].map(([x,y,r])=>`<ellipse cx="${x}" cy="${y}" rx="9" ry="5" fill="#FFF3D6" transform="rotate(${r} ${x} ${y})"/>`).join('')
+];
+$$('[data-sw]').forEach(el=>{
+  const at=el.dataset.sw?el.dataset.sw.split(','):null;
+  el.innerHTML=`<svg viewBox="0 120 600 300" role="img" aria-label="Illustrated sandwich"><ellipse cx="300" cy="408" rx="270" ry="10" fill="rgba(0,0,0,.14)"/>${LY.map((p,i)=>`<g class="ly" data-l="${i}" ${at?`data-at="${at[i]}"`:''} style="--d:${at?(i==3?.12:0):i*.14}">${p}</g>`).join('')}</svg>`;
+});
+// celebration dots
+const done=document.getElementById('done').firstElementChild;
+for(let i=0;i<14;i++){const a=i/14*6.283,d=document.createElement('i');d.style.cssText=`--x:${Math.cos(a)*330|0}px;--y:${Math.sin(a)*90|0}px;background:${i%2?'#FFC20D':'#008938'}`;done.appendChild(d)}
+// word-by-word "typing"
+(function wrap(n,c){[...n.childNodes].forEach(ch=>{if(ch.nodeType==3){const f=document.createDocumentFragment();ch.textContent.split(/(\s+)/).forEach(w=>{if(!w.trim()){f.append(w);return}const s=document.createElement('span');s.className='w';s.style.setProperty('--i',c.i++);s.textContent=w;f.append(s)});ch.replaceWith(f)}else wrap(ch,c)})})(document.getElementById('state'),{i:0});
+
+// ---- deck
+const stage=document.getElementById('stage'),slides=$$('.slide'),dots=document.getElementById('dots');
+const PRINT=new URLSearchParams(location.search).has('print');
+let cur=0,step=0,t0=null,nw=null;
+const max=s=>+s.dataset.steps||0;
+slides.forEach((s,i)=>{const b=document.createElement('button');b.className='dot';b.title=b.ariaLabel=`${i+1}. ${s.dataset.title}`;b.onclick=()=>show(i,0);dots.append(b)});
+function show(i,k){
+  cur=Math.max(0,Math.min(slides.length-1,i));const s=slides[cur];step=Math.max(0,Math.min(max(s),k));
+  slides.forEach((x,j)=>{x.classList.toggle('active',j==cur);x.classList.toggle('past',j<cur);$$('.auto .ly',x).forEach(l=>l.classList.toggle('on',j==cur))});
+  $$('[data-at]',s).forEach(e=>e.classList.toggle('on',step>=+e.dataset.at));
+  $$('[data-only]',s).forEach(e=>e.classList.toggle('cur',step==+e.dataset.only));
+  stage.classList.toggle('isdark',s.classList.contains('dark'));
+  $$('.dot').forEach((d,j)=>d.classList.toggle('cur',j==cur));
+  $$('#mini .ly').forEach(l=>l.classList.toggle('on',+s.dataset.sec>+l.dataset.l));
+  document.getElementById('count').textContent=`${cur+1} / ${slides.length}`;
+  history.replaceState(null,'',`#${cur+1}`+(step?`.${step}`:''));
+  notes();
+}
+const next=()=>{t0=t0||Date.now();step<max(slides[cur])?show(cur,step+1):show(cur+1,0)};
+const prev=()=>step>0?show(cur,step-1):show(cur-1,cur?max(slides[cur-1]):0);
+function key(e){
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  const onBtn=e.target.closest&&e.target.closest('button'),k=e.key;
+  if((k==' '||k=='Enter')&&onBtn)return;
+  if(['ArrowRight',' ','PageDown','Enter'].includes(k))next();
+  else if(['ArrowLeft','PageUp','Backspace'].includes(k))prev();
+  else if(k=='ArrowDown')show(cur+1,0);else if(k=='ArrowUp')show(cur-1,0);
+  else if(k=='Home')show(0,0);else if(k=='End')show(slides.length-1,0);
+  else if(k=='n'||k=='N')toggleNotes();
+  else if(k=='r'||k=='R'){t0=null;notes()}
+  else if(k=='f'||k=='F')document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();
+  else return;
+  e.preventDefault();
+}
+addEventListener('keydown',key);
+stage.addEventListener('click',e=>{if(!e.target.closest('button,a,.ly'))next()});
+// interactions that also work by click
+$$('.tile,.slice').forEach(b=>b.onclick=()=>{b.classList.toggle('on');if(b.matches('.slice')){const i=$$('.slice').indexOf(b);$$('.card')[i].classList.toggle('on',b.classList.contains('on'))}});
+$$('.q').forEach(b=>b.onclick=()=>show(cur,+b.dataset.only));
+// sandwich layers <-> stages
+const detail=document.getElementById('detail'),sts=$$('.st'),cdpLy=$$('.cdp .ly');
+function focusStage(n){sts.forEach(s=>s.classList.toggle('hl',+s.dataset.at==n));cdpLy.forEach(l=>l.classList.toggle('lift',+l.dataset.at==n));
+  const s=sts[n-1];detail.classList.toggle('show',!!s&&s.classList.contains('on'));if(s)detail.textContent=s.dataset.d}
+cdpLy.forEach(l=>{l.onmouseenter=l.onclick=()=>focusStage(+l.dataset.at);l.onmouseleave=()=>focusStage(0)});
+sts.forEach(s=>{s.onmouseenter=s.onfocus=s.onclick=()=>focusStage(+s.dataset.at);s.onmouseleave=s.onblur=()=>focusStage(0)});
+
+// ---- presenter notes (N): separate window, overlay if pop-ups are blocked
+const ov=document.getElementById('ov');
+function notesHTML(){
+  const s=slides[cur],a=s.querySelector('.notes'),nx=slides[cur+1];
+  let body=a?a.innerHTML:'<p>(no notes)</p>';
+  const t=t0?Math.floor((Date.now()-t0)/1000):0,mm=String(t/60|0).padStart(2,'0'),ss=String(t%60).padStart(2,'0');
+  return `<style>h4{margin:14px 0 4px;color:#FFC20D;text-transform:uppercase;letter-spacing:.1em;font-size:.8em}p{margin:0 0 10px}[data-k]{opacity:.35}[data-k="${step}"]{opacity:1}</style>
+  <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #456;padding-bottom:8px;margin-bottom:12px"><b>${cur+1}/${slides.length} ${s.dataset.title}${s.dataset.owner?' · '+s.dataset.owner:''}${max(s)?` · step ${step}/${max(s)}`:''}</b><b style="font-size:1.8em;color:${t>=600?'#ff6b5e':'#FFC20D'}">${mm}:${ss}</b></div>${body}
+  <p style="opacity:.6;margin-top:14px">Next: ${nx?nx.dataset.title:'end'} · R resets the timer</p>`;
+}
+function notes(){const h=notesHTML();if(nw&&!nw.closed)nw.document.body.innerHTML=h;if(ov.classList.contains('show'))ov.innerHTML=h}
+function toggleNotes(){
+  if(nw&&!nw.closed){nw.close();nw=null;return}
+  if(ov.classList.contains('show')){ov.classList.remove('show');return}
+  nw=window.open('','subwaynotes','width=760,height=860');
+  if(nw){nw.document.title='Speaker notes';nw.document.body.style.cssText='background:#0b1a13;color:#fff;font:19px/1.5 system-ui;padding:20px 26px';nw.onkeydown=key}
+  else ov.classList.add('show');
+  notes();
+}
+setInterval(()=>t0&&notes(),1000);
+
+// ---- fit 16:9 stage to any screen
+const fit=()=>stage.style.setProperty('--s',Math.min(innerWidth/1920,innerHeight/1080));
+if(PRINT){document.body.classList.add('print');slides.forEach(s=>{$$('[data-at],.ly',s).forEach(e=>e.classList.add('on'))})}
+else{const go=()=>{const m=location.hash.match(/^#(\d+)(?:\.(\d+))?/);show(m?m[1]-1:0,m&&m[2]?+m[2]:0)};addEventListener('resize',fit);addEventListener('hashchange',go);fit();go()}
+</script>
+</body>
+</html>
